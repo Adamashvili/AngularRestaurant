@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ProductsComponent } from './products/products.component';
 import { DirectDirective } from './direct.directive';
 import { FilterComponent } from './filter/filter.component';
@@ -17,28 +17,25 @@ import { LoadingComponent } from './loading/loading.component';
 import { InterService } from './inter.service';
 import { MiniCategoriesComponent } from './mini-categories/mini-categories.component';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    NavbarComponent,
-    HomeComponent,
-    CartComponent,
-    ProductsComponent,
-    DirectDirective,
-    FilterComponent,
-    FoodDetailsComponent,
-    FooterComponent,
-    LoadingComponent,
-    MiniCategoriesComponent,
-  ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: InterService,
-      multi: true,
-    },
-  ],
-  bootstrap: [AppComponent],
-})
+@NgModule({ declarations: [
+        AppComponent,
+        NavbarComponent,
+        HomeComponent,
+        CartComponent,
+        ProductsComponent,
+        DirectDirective,
+        FilterComponent,
+        FoodDetailsComponent,
+        FooterComponent,
+        LoadingComponent,
+        MiniCategoriesComponent,
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule, AppRoutingModule, FormsModule], providers: [
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: InterService,
+            multi: true,
+        },
+        provideHttpClient(withInterceptorsFromDi()),
+    ] })
 export class AppModule {}
