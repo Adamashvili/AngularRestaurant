@@ -1,7 +1,9 @@
 <main>
-    <ul>
-        <i (click)="closeNav()" class="fa-solid fa-x"></i>
-        <li [ngClass]="activeCategory == 0 ? 'active' : ''" (click)=" getCategories()">All</li>
-        <li [ngClass]="activeCategory == items.id ? 'active': ''" (click)="showByCategory(items.id)"  *ngFor="let items of categories">{{items.name}}</li>
-    </ul>
+  <ul>
+    <i (click)="closeNav()" class="fa-solid fa-x"></i>
+    <li [ngClass]="activeCategory == 0 ? 'active' : ''" (click)=" getCategories()">All</li>
+    @for (items of categories; track items) {
+      <li [ngClass]="activeCategory == items.id ? 'active': ''" (click)="showByCategory(items.id)" >{{items.name}}</li>
+    }
+  </ul>
 </main>

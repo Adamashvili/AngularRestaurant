@@ -3,7 +3,9 @@
   <article>
     <ul>
       <li [ngClass]="this.activeCategory == 0 ? 'active' : ''" (click)="showAllProducts()" >All</li>
-      <li [ngClass]="this.activeCategory == items.id ? 'active' : ''" (click)="showProductsByCategory(items.id)" *ngFor="let items of categories">{{ items.name }}</li>
+      @for (items of categories; track items) {
+        <li [ngClass]="this.activeCategory == items.id ? 'active' : ''" (click)="showProductsByCategory(items.id)">{{ items.name }}</li>
+      }
     </ul>
   </article>
   <div [ngClass]="isMiniCategoryShown ? '' : 'mininavHide'">
@@ -13,63 +15,64 @@
 
 <section class="container mainArea">
   <div class="left">
-      <app-filter (filterTransfer)="getFilteredData($event)"></app-filter>  
+    <app-filter (filterTransfer)="getFilteredData($event)"></app-filter>
   </div>
 
-  <div *ngIf="foodList" class="right">
-
-    <div *ngIf="isPopuped" class="popup">
-      <div class="mainModal">
-        <h1>Enter Product Quantity</h1>
-        <input type="number" [(ngModel)]="itemQuantity">
-        <button (click)="addToCart()" >Submit</button>
-        <i (click)="closeModal()" class="fa-solid fa-x"></i>
-      </div>
-      
-    </div>
-    <ng-container *ngIf="foodList.length > 0">
-      <div class="cardList">
-        <div class="card" *ngFor="let items of foodList">
-          <div class="imgArea">
-            <img [src]="items.image" alt="" />
-            <p [style.backgroundColor]="items.spiciness <= 2 ? 'green' : 'red'">Spiciness: {{items.spiciness}}</p>
-            <span>{{items.price | currency}}</span>
+  @if (foodList) {
+    <div class="right">
+      @if (isPopuped) {
+        <div class="popup">
+          <div class="mainModal">
+            <h1>Enter Product Quantity</h1>
+            <input type="number" [(ngModel)]="itemQuantity">
+            <button (click)="addToCart()" >Submit</button>
+            <i (click)="closeModal()" class="fa-solid fa-x"></i>
           </div>
-          <div class="info">
-            <h2>{{ items.name }}</h2>
-            <div class="specs">
-              <div class="specList">
-                <p>
-                  <i [style.color]="items.vegeterian ? 'green' : 'red'"
+        </div>
+      }
+      @if (foodList.length > 0) {
+        <div class="cardList">
+          @for (items of foodList; track items) {
+            <div class="card">
+              <div class="imgArea">
+                <img [src]="items.image" alt="" />
+                <p [style.backgroundColor]="items.spiciness <= 2 ? 'green' : 'red'">Spiciness: {{items.spiciness}}</p>
+                <span>{{items.price | currency}}</span>
+              </div>
+              <div class="info">
+                <h2>{{ items.name }}</h2>
+                <div class="specs">
+                  <div class="specList">
+                    <p>
+                      <i [style.color]="items.vegeterian ? 'green' : 'red'"
                     class="fa-solid fa-{{
                       items.vegeterian ? 'circle-check' : 'x'
                     }}"
-                  ></i>
-                  Vegeterian
-                </p>
-                <p>
-                  <i [style.color]="items.nuts ? 'green' : 'red'"
-                    class="fa-solid fa-{{ items.nuts ? 'circle-check' : 'x' }}"
-                  ></i>
-                  Nuts
-                </p>
+                      ></i>
+                      Vegeterian
+                    </p>
+                    <p>
+                      <i [style.color]="items.nuts ? 'green' : 'red'"
+                        class="fa-solid fa-{{ items.nuts ? 'circle-check' : 'x' }}"
+                      ></i>
+                      Nuts
+                    </p>
+                  </div>
+                </div>
+                <div class="btns">
+                  <button (click)="gotoDetails(items)">View Details</button>
+                  <button (click)="openModal(items)">Add to Cart</button>
+                </div>
               </div>
             </div>
-            <div class="btns">
-              <button (click)="gotoDetails(items)">View Details</button>
-              <button (click)="openModal(items)">Add to Cart</button>
-            </div>
-          </div>
+          }
         </div>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="foodList.length == 0">
+      }
+      @if (foodList.length == 0) {
         <div class="notfoundList">
           <img src="../../assets/no_result.gif" alt="">
-
         </div>
-    </ng-container>
-   
-  </div>
+      }
+    </div>
+  }
 </section>

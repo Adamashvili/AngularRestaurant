@@ -1,37 +1,42 @@
 <section>
-    <div class="banner">
-        <h1>Fast And Efficient, Online Ordering You Must Try.</h1>
-    </div>
+  <div class="banner">
+    <h1>Fast And Efficient, Online Ordering You Must Try.</h1>
+  </div>
 </section>
 
-<section *ngIf="cartList" class="container">
+@if (cartList) {
+  <section class="container">
     <h1>Cart</h1>
-    <table *ngIf="cartList.length > 0">
+    @if (cartList.length > 0) {
+      <table>
         <tr>
-            <th colspan="2">Product</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Total</th>
-            <th>Action</th>
+          <th colspan="2">Product</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Total</th>
+          <th>Action</th>
         </tr>
-        <tr *ngFor="let items of cartList">
+        @for (items of cartList; track items) {
+          <tr>
             <td><img [src]="items.product.image" alt=""></td>
             <td>{{items.product.name}}</td>
             <td ><button (click)="increaseItem(items)" class="increase">+</button> {{items.quantity}} <button [disabled]="items.quantity == 1" (click)="decreaseItem(items)" class="decrease">-</button></td>
             <td>{{items.product.price | currency}}</td>
             <td>{{(items.product.price * items.quantity) | currency}}</td>
             <td><button (click)="deleteItem(items.product.id, items.product.name)" class="removeBtn">Remove</button></td>
-        </tr>
+          </tr>
+        }
         <tr>
-            <td class="total" colspan="6">Total Price: {{totalPrice | currency}}</td>
+          <td class="total" colspan="6">Total Price: {{totalPrice | currency}}</td>
         </tr>
-    </table>
-
-    <section class="container emptyCart" *ngIf="cartList.length == 0 ">
+      </table>
+    }
+    @if (cartList.length == 0 ) {
+      <section class="container emptyCart">
         <img src="../../assets/emptycart.png" alt="">
         <h1>Your Cart is empty...</h1>
         <button routerLink="/">Go To Homepage</button>
-    </section>
-
-
-</section>
+      </section>
+    }
+  </section>
+}
