@@ -8,11 +8,14 @@ import {
 import { ApiService } from '../api.service';
 import { Subject, finalize } from 'rxjs';
 import { ToolsService } from '../tools.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.css',
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrl: './cart.component.css',
+    standalone: true,
+    imports: [CommonModule]
 })
 export class CartComponent implements OnInit {
   constructor(private service: ApiService, public toolsServ: ToolsService) {}

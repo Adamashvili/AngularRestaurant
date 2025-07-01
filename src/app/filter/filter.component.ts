@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-filter',
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.css'
+    selector: 'app-filter',
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.css',
+    standalone: false
 })
 export class FilterComponent {
   constructor() {}

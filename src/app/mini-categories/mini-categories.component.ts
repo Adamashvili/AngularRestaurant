@@ -12,9 +12,10 @@ import { ToolsService } from '../tools.service';
 import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-mini-categories',
-  templateUrl: './mini-categories.component.html',
-  styleUrl: './mini-categories.component.css',
+    selector: 'app-mini-categories',
+    templateUrl: './mini-categories.component.html',
+    styleUrl: './mini-categories.component.css',
+    standalone: false
 })
 export class MiniCategoriesComponent implements OnInit {
   constructor(public tools: ToolsService, public apiServ: ApiService) {}

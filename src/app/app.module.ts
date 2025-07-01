@@ -16,12 +16,13 @@ import { FooterComponent } from './footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { InterService } from './inter.service';
 import { MiniCategoriesComponent } from './mini-categories/mini-categories.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({ declarations: [
         AppComponent,
         NavbarComponent,
         HomeComponent,
-        CartComponent,
+        
         ProductsComponent,
         DirectDirective,
         FilterComponent,
@@ -29,8 +30,9 @@ import { MiniCategoriesComponent } from './mini-categories/mini-categories.compo
         FooterComponent,
         LoadingComponent,
         MiniCategoriesComponent,
+        
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule, AppRoutingModule, FormsModule], providers: [
+    bootstrap: [AppComponent], imports: [BrowserModule, AppRoutingModule, FormsModule,], providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterService,

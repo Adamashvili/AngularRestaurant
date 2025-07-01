@@ -1,7 +1,8 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[navOpacity]',
+    selector: '[navOpacity]',
+    standalone: false
 })
 export class DirectDirective {
   constructor() {}

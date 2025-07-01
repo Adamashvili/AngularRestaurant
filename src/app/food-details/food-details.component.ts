@@ -4,9 +4,10 @@ import { ApiService } from '../api.service';
 import { ToolsService } from '../tools.service';
 
 @Component({
-  selector: 'app-food-details',
-  templateUrl: './food-details.component.html',
-  styleUrl: './food-details.component.css',
+    selector: 'app-food-details',
+    templateUrl: './food-details.component.html',
+    styleUrl: './food-details.component.css',
+    standalone: false
 })
 export class FoodDetailsComponent implements OnInit {
   constructor(public actRoute: ActivatedRoute, public service: ApiService, public toolsServ: ToolsService) {}

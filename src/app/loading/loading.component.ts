@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ToolsService } from '../tools.service';
 
 @Component({
-  selector: 'app-loading',
-  templateUrl: './loading.component.html',
-  styleUrl: './loading.component.css'
+    selector: 'app-loading',
+    templateUrl: './loading.component.html',
+    styleUrl: './loading.component.css',
+    standalone: false
 })
 export class LoadingComponent implements OnInit {
   constructor(public tools: ToolsService) {}
