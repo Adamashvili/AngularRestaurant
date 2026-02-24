@@ -1,42 +1,97 @@
-.banner {
-  height: 400px;
+.head {
+  height: 100vh;
   background-image: url("../../assets/banner.jpg");
   background-size: cover;
   background-attachment: fixed;
+  padding: 50px;
+}
+
+
+.banner {
+  color: white;
+  width: 50%;
+  height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-evenly;
+  font-size: 50px;
+  font-family: "Roboto", sans-serif;
+  cursor: default;
+  letter-spacing: 2px;
 }
 
 .banner h1 {
+  color: #DD2804;
+  text-shadow: 0 0 5px #DD2804;
+  transition: 0.5s;
+}
+
+.banner h3 {
+
+  text-shadow: 3px 3px 2px #DD2804;
+  transition: 0.5s;
+}
+
+.banner h1:hover {
+  color: red;
+  text-shadow: 0 4px 15px red;
+}
+
+
+.banner button {
+  width: 170px;
+  height: 50px;
+  background-color: #DD2804;
+  border: none;
   color: white;
-  font-family: "Playwrite FR Trad", cursive;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 28px;
+  cursor: pointer;
+  border: 0.8px solid #DD2804;
+  transition: 0.4s;
 }
 
-
-@media screen and (max-width: 998px) {
-  .banner h1 {
-    font-size: 16px;
-  }
-  
+.banner button:hover {
+  background-color: white;
+  color: #DD2804;
 }
 
-@media screen and (max-width: 768px) {
-  .banner {
-    height: 250px;
-  }
-  
+main {
+  background-color: #F9F2EA;
+  padding: 60px;
 }
 
-@media screen and (max-width: 500px) {
-  .banner h1 {
-    font-size: 12px;
-    width: 80%;
-    margin: 0 auto;
-  }
-  
+.sampleCards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+
+}
+
+.sampleCards .card {
+  width: 430px;
+  height: 350px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 50px 80px;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  text-shadow: 0 0 1.2px ;
+
+}
+
+.sampleCards .card img {
+  width: 60px;
+}
+
+main > h1 {
+  color: #DD2804;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 65px;
+  margin: 70px 0;
+  text-shadow: 0 0 3px #DD2804;
 }

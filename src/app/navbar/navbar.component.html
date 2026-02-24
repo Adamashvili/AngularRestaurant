@@ -1,7 +1,19 @@
-<nav navOpacity >
-    <h1 routerLink="/">Online Restaurant <app-loading></app-loading> </h1>
-    <ul>
-        <li routerLink="/" routerLinkActive="activePage" [routerLinkActiveOptions]="{exact: true}">Home</li>
-        <li routerLink="/cart" routerLinkActive="activePage">Cart <span>{{cartNumber}}</span></li>
-    </ul>
+
+<nav>
+    <h4>ASIAN TASTE <i class="fa-solid fa-star"></i></h4>
+    <div class="lists">
+        <ul>
+            <li routerLinkActive="active" routerLink="/">Home</li>
+            <li routerLinkActive="active" >Menu</li>
+            <li routerLinkActive="active" >Order Online</li>
+            <li routerLinkActive="active" >Contact</li>
+            <li> <i class="fa-solid fa-user"></i> Log In </li>
+            <li> <i class="fa-solid fa-cart-shopping"></i> 0 </li>
+        </ul>
+        <button>Order Online</button>
+    </div>
+    <div class="mobileBar">
+         <li> <i class="fa-solid fa-cart-shopping"></i> 0 </li>
+         <i class="fa-solid fa-bars"></i>
+    </div>
 </nav>
