@@ -1,0 +1,25 @@
+<div class="allTimeFav">
+    <h1><i class="fa-solid fa-star"></i> ALL TIME FAVOURITES <i class="fa-solid fa-star"></i></h1>
+    <div class="favContainer">
+        @for (item of randomProducts; track $index) {
+        <div class="card">
+            <div class="inner">
+                <img [src]="item.image" alt="">
+            </div>
+            <h3> {{item.name | uppercase}} </h3>
+        </div>
+        }
+
+    </div>
+    <button routerLink="/menu">Full Menu</button>
+</div>
+
+<div class="special">
+    <div class="left">
+        <h2><i class="fa-solid fa-star"></i> SPECIAL OF <br> THE WEEK <i class="fa-solid fa-star"></i></h2>
+        <h5>YOUR NEW GUILTY PLEASURE</h5>
+        <p> {{specialImage.name}}, consectetur adipisicing elit. Perspiciatis eius quos sint ex doloremque
+            voluptates, ad blanditiis quae accusantium placeat?</p>
+    </div>
+    <div style="background-image: url({{specialImage.image}});" class="right"></div>
+</div>

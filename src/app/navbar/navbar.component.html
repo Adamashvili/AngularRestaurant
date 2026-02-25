@@ -3,9 +3,8 @@
     <h4>ASIAN TASTE <i class="fa-solid fa-star"></i></h4>
     <div class="lists">
         <ul>
-            <li routerLinkActive="active" routerLink="/">Home</li>
-            <li routerLinkActive="active" >Menu</li>
-            <li routerLinkActive="active" >Order Online</li>
+            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/">Home</li>
+            <li routerLinkActive="active" routerLink="/menu" >Menu</li>
             <li routerLinkActive="active" >Contact</li>
             <li> <i class="fa-solid fa-user"></i> Log In </li>
             <li> <i class="fa-solid fa-cart-shopping"></i> 0 </li>

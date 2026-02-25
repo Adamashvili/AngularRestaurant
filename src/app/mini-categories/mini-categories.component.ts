@@ -32,7 +32,7 @@ export class MiniCategoriesComponent implements OnInit {
     this.tools.categoriesSubj.subscribe((data) => {
       this.categories = data;
       this.activeCategory = 0
-      console.log(data);
+    
       
     });
   }

@@ -17,12 +17,13 @@ import { LoadingComponent } from './loading/loading.component';
 import { InterService } from './inter.service';
 import { MiniCategoriesComponent } from './mini-categories/mini-categories.component';
 import { CommonModule } from '@angular/common';
+import { FavouritesComponent } from './home/favourites/favourites.component';
 
 @NgModule({ declarations: [
         AppComponent,
         NavbarComponent,
         HomeComponent,
-        
+        FavouritesComponent,
         ProductsComponent,
         DirectDirective,
         FilterComponent,
@@ -30,6 +31,7 @@ import { CommonModule } from '@angular/common';
         FooterComponent,
         LoadingComponent,
         MiniCategoriesComponent,
+        FavouritesComponent,
         
     ],
     bootstrap: [AppComponent], imports: [BrowserModule, AppRoutingModule, FormsModule,], providers: [
