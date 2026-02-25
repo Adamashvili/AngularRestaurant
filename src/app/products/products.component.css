@@ -1,4 +1,4 @@
-article h1 {
+/* article h1 {
  
   margin: 20px 0;
   font-family: "Playwrite US Modern", cursive;
@@ -285,4 +285,118 @@ ul li:hover {
     width: 80vw;
   } 
    
- }
+ } */
+
+
+
+.banner {
+  margin-top: 60px;
+  height: 350px;
+  background-color: #FBE690;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 50px;
+  cursor: default;
+}
+
+.banner h1 {
+  font-size: 90px;
+  color: #DD2804;
+}
+
+.banner h4 {
+  background-color: white;
+  width: fit-content;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-weight: 300;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.banner h4 span {
+  background-color: green;
+  width: 5px;
+  height: 5px;
+  display: inline-block;
+  border-radius: 50%;
+}
+
+.banner .btns {
+  display: flex;
+}
+
+.btns button {
+  width: 150px;
+  height: 40px;
+  background-color: transparent;
+  border: 0.5px solid black;
+  font-weight: 300;
+}
+
+.btns button:nth-child(1) {
+  background-color: #DD2804;
+  color: white;
+  
+}
+
+
+.banner .infos {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.infos p {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+
+.categories {
+  display: flex;
+  list-style: none;
+  margin-top: 30px;
+  margin-left: 30px;
+  padding: 0 20px;
+  gap: 15px;
+  font-weight: 300;
+  font-size: 14px;
+  border-bottom: 2px solid #F4B9AB;
+  width: fit-content;
+}
+
+.categories li {
+  cursor: pointer;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.categories li::after, .categories .current::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0;
+  height: 2px;
+  background-color: #DD2804;
+}
+.categories li:hover, .current {
+  color: #DD2804;
+  text-shadow: 0 0 1px #DD2804;
+}
+
+.current::after {
+  width: 100% !important;
+}
+
+.categories li:hover::after {
+  width: 100%;
+}
+
+

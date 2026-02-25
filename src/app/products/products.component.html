@@ -1,4 +1,4 @@
-<article class="container">
+<!-- <article class="container">
   <h1>Categories <i (click)="miniCategoryToggle()" class="fa-solid fa-bars"></i></h1>
   <article>
     <ul>
@@ -75,4 +75,27 @@
       }
     </div>
   }
-</section>
+</section> -->
+
+
+<div class="banner">
+  <h1>ORDER ONLINE</h1>
+  <h4><span></span> Accepting Orders</h4>
+  <div class="btns">
+    <button>Pickup</button>
+    <button>Delivery</button>
+  </div>
+  <div class="infos">
+    <p> <i class="fa-solid fa-clock"></i> Pickup time: Up to 30 minutes</p>
+    <p> <i class="fa-solid fa-location-dot"></i> Pickup Address: Somewhere in Tbilisi</p>
+  </div>
+
+</div>
+
+<ul class="categories">
+  <li [ngClass]="this.activeCategory == 0 ? 'current' : ''" (click)="showAllProducts()">ALL</li>
+  @for (items of categories; track items) {
+  <li [ngClass]="this.activeCategory == items.id ? 'current' : ''" (click)="showProductsByCategory(items.id)">{{
+    items.name | uppercase}}</li>
+  }
+</ul>
