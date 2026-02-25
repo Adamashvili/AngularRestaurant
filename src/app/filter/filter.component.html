@@ -1,18 +1,19 @@
 <div class="filterCard">
-    <p>Filter</p>
-    <i class="fa-solid fa-filter"></i>
-    <div class="inputSpics">
-      <p>Spiciness: <span>{{spiciness == "-1" ? 'Not Chosen' : spiciness}}</span></p>
-      <input type="range" min="-1" max="4" step="1" [(ngModel)]="spiciness">
-    </div>
-    <div class="inputField">
-       <input type="checkbox" name="" id="nuts" [(ngModel)]="nuts">
-       <label for="nuts">No Nuts</label>
-    </div>
-    <div class="inputField">
-      <input type="checkbox" name="" id="vegeterian" [(ngModel)]="vegeterian">
-      <label for="vegeterian">Vegeterian Only</label>
-   </div>
-   <button (click)="resetInputs()">RESET</button>
-   <button (click)="filterProducts()">APPLY FILTER</button>
+  <div class="inputSpics">
+    <p>SPICINESS: <span>{{spiciness == "-1" ? 'Not Chosen' : spiciness == "0" ? 'no' : spiciness == "1" ? 'low' : spiciness == "2" ? 'medium' : spiciness == "3" ? 'high' : 'very high' }}</span></p>
+    <input type="range" min="-1" max="4" step="1" [(ngModel)]="spiciness">
   </div>
+  <div class="inputField">
+    <input type="checkbox" name="" id="nuts" [(ngModel)]="nuts">
+    <label for="nuts">NUTS</label>
+  </div>
+  <div class="inputField">
+    <input type="checkbox" name="" id="vegeterian" [(ngModel)]="vegeterian">
+    <label for="vegeterian">VEGETERIAN </label>
+  </div>
+  <div class="btns">
+
+    <button (click)="resetInputs()">RESET</button>
+    <button (click)="filterProducts()">APPLY FILTER</button>
+  </div>
+</div>

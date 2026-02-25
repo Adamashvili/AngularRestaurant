@@ -92,10 +92,53 @@
 
 </div>
 
-<ul class="categories">
-  <li [ngClass]="this.activeCategory == 0 ? 'current' : ''" (click)="showAllProducts()">ALL</li>
-  @for (items of categories; track items) {
-  <li [ngClass]="this.activeCategory == items.id ? 'current' : ''" (click)="showProductsByCategory(items.id)">{{
-    items.name | uppercase}}</li>
-  }
-</ul>
+<div class="filter">
+
+  <ul class="categories">
+    <li [ngClass]="this.activeCategory == 0 ? 'current' : ''" (click)="showAllProducts()">ALL</li>
+    @for (items of categories; track items) {
+    <li [ngClass]="this.activeCategory == items.id ? 'current' : ''" (click)="showProductsByCategory(items.id)">{{
+      items.name | uppercase}}</li>
+    }
+  </ul>
+  <div class="adtFilter">
+    @if (true) {
+    <app-filter></app-filter>
+    }
+    @else {
+    <p (click)="isFilterShown = true">ADDITIONAL FILTER</p>
+    }
+  </div>
+</div>
+
+
+<main>
+  <h1>MENU</h1>
+  <h1> {{activeCategory == 0 ? 'ALL' : currentCategory | uppercase}} </h1>
+
+  <section>
+
+    @for (item of foodList; track $index) {
+    <div class="card">
+      <div class="up">
+        <h3> {{item.name}} </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque repellat voluptates omnis facilis. Quis
+          deleniti
+          fuga cumque.</p>
+      </div>
+      <div class="bottom">
+        <div class="spec">
+          <p>nuts <i class="fa-solid fa-{{item.nuts ? 'check' : 'x' }}"></i> </p>
+          <p>vegeterian <i class="fa-solid fa-{{item.vegeterian ? 'check' : 'x' }}"></i> </p>
+        </div>
+        <div class="priceSp">
+          <p> {{item.price | currency }} </p>
+          <p>spiciness <span>{{item.spiciness == 0 ? 'no' : item.spiciness == 1 ? 'low' : item.spiciness == 2 ? 'medium'
+              : item.spiciness == 3 ? 'high' : 'very high' }} </span> </p>
+        </div>
+      </div>
+
+    </div>
+    }
+  </section>
+</main>

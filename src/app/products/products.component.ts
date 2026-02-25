@@ -27,6 +27,8 @@ export class ProductsComponent implements OnInit {
   public dataToPost: any;
   public cartNum: any
   public isMiniCategoryShown = false
+  public currentCategory: string = ""
+  isFilterShown: boolean = false
 
   miniCategoryToggle() {
     this.tools.openMiniNav()
@@ -57,6 +59,7 @@ export class ProductsComponent implements OnInit {
     this.service.getProductsByCategory(itemID).subscribe((data: any) => {
       this.foodList = data.products
       this.activeCategory = itemID
+      this.currentCategory = data.name
     })
   }
 
