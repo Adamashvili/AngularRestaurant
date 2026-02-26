@@ -1,20 +1,20 @@
 import { Directive, HostBinding, HostListener } from '@angular/core';
 
 @Directive({
-    selector: '[navOpacity]',
+    selector: '[navBtn]',
     standalone: false
 })
 export class DirectDirective {
   constructor() {}
 
-  @HostBinding('style.backgroundColor') public scrollnav =
+  @HostBinding('style.transform') public scrollnav =
     'rgb(25, 11, 2, 0.6)';
 
-  @HostListener('window:scroll', ['$event']) scrolling($event: any) {
-    if (window.scrollY >= 290) {
-      this.scrollnav = 'rgb(25, 11, 2, 1)';
+  @HostListener('window:scroll', ) scrolling() {
+    if (window.scrollY >= 300) {
+      this.scrollnav = 'translate(80px, -150px) rotate(90deg)';
     } else {
-      this.scrollnav = 'rgb(25, 11, 2, 0.6)';
+      this.scrollnav = 'rotate(90deg) translate(40px, -45px)';
     }
   }
 }

@@ -1,4 +1,4 @@
-<section class="container details">
+<!-- <section class="container details">
   <div class="left">
     <button routerLink="/">&larr; Back</button>
     <img [src]="foodDetails.image" alt="" />
@@ -46,4 +46,23 @@
     </div>
     </div>
     
+</section> -->
+
+
+
+<section >
+  <button (click)="close()">X</button>
+  <div class="left">
+    <h1> {{foodDetails.name}} </h1>
+    <img [src]="foodDetails.image" alt="">
+    <p> {{foodDetails.name}} dolor sit amet consectetur adipisicing elit. Delectus nisi doloribus, nesciunt culpa aliquid ad.
+      Itaque laudantium vel id iusto blanditiis explicabo laboriosam tenetur incidunt consequatur quidem in nobis
+      voluptatum veniam ut moleam minima. Error, recusandae molestias!</p>
+  </div>
+  <div class="right">
+    <h3>Product Price {{foodDetails.price |currency}}</h3>
+    <input  type="number" placeholder="Enter Quantity" [(ngModel)]="itemQuantity">
+    <h3>Total: {{(+itemQuantity * foodDetails.price) | currency}} </h3>
+    <button (click)="addToCart(foodDetails)">ADD TO CART</button>
+  </div>
 </section>

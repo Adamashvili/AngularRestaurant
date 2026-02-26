@@ -1,6 +1,7 @@
 <div class="filterCard">
   <div class="inputSpics">
-    <p>SPICINESS: <span>{{spiciness == "-1" ? 'Not Chosen' : spiciness == "0" ? 'no' : spiciness == "1" ? 'low' : spiciness == "2" ? 'medium' : spiciness == "3" ? 'high' : 'very high' }}</span></p>
+    <p>SPICINESS: <span>{{spiciness == "-1" ? 'Not Chosen' : spiciness == "0" ? 'no' : spiciness == "1" ? 'low' :
+        spiciness == "2" ? 'medium' : spiciness == "3" ? 'high' : 'very high' }}</span></p>
     <input type="range" min="-1" max="4" step="1" [(ngModel)]="spiciness">
   </div>
   <div class="inputField">
@@ -15,5 +16,6 @@
 
     <button (click)="resetInputs()">RESET</button>
     <button (click)="filterProducts()">APPLY FILTER</button>
+    <button (click)="close()">X</button>
   </div>
 </div>

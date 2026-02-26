@@ -37,6 +37,19 @@
 .filterCard button:nth-child(2) {
   background-color: #DD2804;
   color: white;
+  border-right: none;
+}
+.filterCard button:nth-child(3) {
+  background-color: black;
+  color: white;
+  width: 30px;
+  box-shadow: 1px 0 5px 4px #DD2804 inset;
+  border-left: none;
+  transition: 0.4s;
+}
+
+.filterCard button:nth-child(3):hover {
+  box-shadow: none;
 }
 
 input[type="range"] {

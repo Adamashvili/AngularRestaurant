@@ -21,22 +21,15 @@ export class ProductsComponent implements OnInit {
 
   public categories: any;
   public foodList: any;
-  public activeCategory: number = 0
-  public isPopuped: boolean = false
+  public activeCategory: any = 0
+  public isDetailsPopuped: boolean = false
   public itemQuantity: string = "1";
   public dataToPost: any;
   public cartNum: any
-  public isMiniCategoryShown = false
   public currentCategory: string = ""
-  isFilterShown: boolean = false
-
-  miniCategoryToggle() {
-    this.tools.openMiniNav()
-    this.tools.miniNavToggle.subscribe((toggle) => {
-      this.isMiniCategoryShown = toggle
-
-    })
-  }
+  public currentItem: any;
+  public isFilterShown: boolean = false
+  
 
 
 
@@ -63,26 +56,29 @@ export class ProductsComponent implements OnInit {
     })
   }
 
-  showProductsByMINI(list: any) {
-
-    this.foodList = list.products
-
-  }
 
   getFilteredData(filterData: any) {
-    this.service.filterProducts(filterData.vegeterian, filterData.nuts, filterData.spiciness).subscribe(data => {
-      this.foodList = data
-      this.activeCategory = -1
+    if (this.activeCategory == 0) {
+      this.activeCategory = ""
+    }
 
-    })
+    if (filterData) {
+      this.service.filterProducts(filterData.vegeterian, filterData.nuts, filterData.spiciness, this.activeCategory).subscribe(data => this.foodList = data)
+    }else{
+      this.showAllProducts()
+    }
+  }
+
+  close(e: boolean) {
+    this.isFilterShown = e
+
 
   }
 
-  openModal(item: any) {
-    this.isPopuped = true
-    this.dataToPost = item
-
-
+  closeArea(e:any) {
+    if(e.target.className == "details") {
+      this.isDetailsPopuped = false
+    }
   }
 
   getCartNum() {
@@ -92,52 +88,46 @@ export class ProductsComponent implements OnInit {
     })
   }
 
+  getDetails(item:any) {
+    this.currentItem = item
+    this.isDetailsPopuped = true
+  }
+
   addToCart() {
     this.service.getCartItems().subscribe((cartData: any) => {
       let isProdAtCart = cartData.find((cartItem: any) => cartItem.product.id == this.dataToPost.id)
       if (!isProdAtCart) {
-         this.service.addToCart({
-           "quantity": this.itemQuantity,
-           "price": this.dataToPost.price,
-           "productId": this.dataToPost.id
-         }).subscribe({
-           next: () => {
-             alert("Product added to cart successfully")
-             this.isPopuped = false;
-             this.getCartNum()
-           },
-           error: () => alert("Try again...")
-         })
+        this.service.addToCart({
+          "quantity": this.itemQuantity,
+          "price": this.dataToPost.price,
+          "productId": this.dataToPost.id
+        }).subscribe({
+          next: () => {
+            alert("Product added to cart successfully")
+            this.isDetailsPopuped = false;
+            this.getCartNum()
+          },
+          error: () => alert("Try again...")
+        })
       }
       else {
-        
+
         this.service.updateCartItem({
-           "quantity": this.itemQuantity + isProdAtCart.quantity,
-           "price": this.dataToPost.price,
-           "productId": this.dataToPost.id
-         }).subscribe({
-           next: () => {
-             alert("Product Increased")
-             this.isPopuped = false;
-             this.getCartNum()
-           },
-           error: () => alert("Try again...")
-         })
+          "quantity": this.itemQuantity + isProdAtCart.quantity,
+          "price": this.dataToPost.price,
+          "productId": this.dataToPost.id
+        }).subscribe({
+          next: () => {
+            alert("Product Increased")
+            this.isDetailsPopuped = false;
+            this.getCartNum()
+          },
+          error: () => alert("Try again...")
+        })
       }
 
     })
-
-
-
-
   }
 
-  closeModal() {
-    this.isPopuped = false
-    this.itemQuantity = "1";
-  }
-
-  gotoDetails(item: any) {
-    this.route.navigate(["/foodDetails"], { queryParams: item })
-  }
+ 
 }

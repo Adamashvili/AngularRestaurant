@@ -1,82 +1,3 @@
-<!-- <article class="container">
-  <h1>Categories <i (click)="miniCategoryToggle()" class="fa-solid fa-bars"></i></h1>
-  <article>
-    <ul>
-      <li [ngClass]="this.activeCategory == 0 ? 'active' : ''" (click)="showAllProducts()" >All</li>
-      @for (items of categories; track items) {
-        <li [ngClass]="this.activeCategory == items.id ? 'active' : ''" (click)="showProductsByCategory(items.id)">{{ items.name }}</li>
-      }
-    </ul>
-  </article>
-  <div [ngClass]="isMiniCategoryShown ? '' : 'mininavHide'">
-    <app-mini-categories (dataTransfer)="showProductsByMINI($event)"></app-mini-categories>
-  </div>
-</article>
-
-<section class="container mainArea">
-  <div class="left">
-    <app-filter (filterTransfer)="getFilteredData($event)"></app-filter>
-  </div>
-
-  @if (foodList) {
-    <div class="right">
-      @if (isPopuped) {
-        <div class="popup">
-          <div class="mainModal">
-            <h1>Enter Product Quantity</h1>
-            <input type="number" [(ngModel)]="itemQuantity">
-            <button (click)="addToCart()" >Submit</button>
-            <i (click)="closeModal()" class="fa-solid fa-x"></i>
-          </div>
-        </div>
-      }
-      @if (foodList.length > 0) {
-        <div class="cardList">
-          @for (items of foodList; track items) {
-            <div class="card">
-              <div class="imgArea">
-                <img [src]="items.image" alt="" />
-                <p [style.backgroundColor]="items.spiciness <= 2 ? 'green' : 'red'">Spiciness: {{items.spiciness}}</p>
-                <span>{{items.price | currency}}</span>
-              </div>
-              <div class="info">
-                <h2>{{ items.name }}</h2>
-                <div class="specs">
-                  <div class="specList">
-                    <p>
-                      <i [style.color]="items.vegeterian ? 'green' : 'red'"
-                    class="fa-solid fa-{{
-                      items.vegeterian ? 'circle-check' : 'x'
-                    }}"
-                      ></i>
-                      Vegeterian
-                    </p>
-                    <p>
-                      <i [style.color]="items.nuts ? 'green' : 'red'"
-                        class="fa-solid fa-{{ items.nuts ? 'circle-check' : 'x' }}"
-                      ></i>
-                      Nuts
-                    </p>
-                  </div>
-                </div>
-                <div class="btns">
-                  <button (click)="gotoDetails(items)">View Details</button>
-                  <button (click)="openModal(items)">Add to Cart</button>
-                </div>
-              </div>
-            </div>
-          }
-        </div>
-      }
-      @if (foodList.length == 0) {
-        <div class="notfoundList">
-          <img src="../../assets/no_result.gif" alt="">
-        </div>
-      }
-    </div>
-  }
-</section> -->
-
 
 <div class="banner">
   <h1>ORDER ONLINE</h1>
@@ -102,11 +23,11 @@
     }
   </ul>
   <div class="adtFilter">
-    @if (true) {
-    <app-filter></app-filter>
+    @if (isFilterShown) {
+    <app-filter (filterTransfer)="getFilteredData($event)" (closeTransfer)="isFilterShown = $event"></app-filter>
     }
     @else {
-    <p (click)="isFilterShown = true">ADDITIONAL FILTER</p>
+    <p (click)="isFilterShown = true"> &larr; ADDITIONAL FILTER</p>
     }
   </div>
 </div>
@@ -119,7 +40,7 @@
   <section>
 
     @for (item of foodList; track $index) {
-    <div class="card">
+    <div class="card" (click)="getDetails(item)">
       <div class="up">
         <h3> {{item.name}} </h3>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque repellat voluptates omnis facilis. Quis
@@ -140,5 +61,15 @@
 
     </div>
     }
+    @empty {
+      <h1 class="nothing">NOTHING FOUND...</h1>
+    }
   </section>
 </main>
+
+@if (isDetailsPopuped) {
+<div class="details" (click)="closeArea($event)">
+  <app-food-details [foodDetails]="currentItem" (closeEmit)="isDetailsPopuped = $event"></app-food-details>
+</div>
+
+}

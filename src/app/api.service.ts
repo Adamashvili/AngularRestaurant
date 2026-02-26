@@ -36,8 +36,8 @@ export class ApiService {
     return this.http.get("https://restaurant.stepprojects.ge/api/Products/GetAll")
   }
 
-  filterProducts(vegeterian: boolean, nuts: boolean, spcs: number) {
-    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?vegeterian=${vegeterian}&nuts=${nuts}&spiciness=${spcs}`)
+  filterProducts(vegeterian: boolean, nuts: boolean, spcs: number, category: number) {
+    return this.http.get(`https://restaurant.stepprojects.ge/api/Products/GetFiltered?vegeterian=${vegeterian}&nuts=${nuts}&spiciness=${spcs}&categoryId=${category}`)
   }
 
 

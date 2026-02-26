@@ -14,6 +14,7 @@ export class FilterComponent {
   public vegeterian: string = ""
 
   @Output() public filterTransfer: EventEmitter<any> = new EventEmitter()
+  @Output() public closeTransfer: EventEmitter<boolean> = new EventEmitter()
 
   
 
@@ -30,9 +31,14 @@ export class FilterComponent {
     
   }
 
+  close(){
+    this.closeTransfer.emit(false)
+  }
+
   resetInputs() {
     this.spiciness = "-1",
     this.nuts = "",
     this.vegeterian = ""
+    this.filterTransfer.emit("")
   }
 }
