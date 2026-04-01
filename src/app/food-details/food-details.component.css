@@ -186,6 +186,7 @@
     padding: 50px;
     gap: 15px;
     text-shadow: 0 0 1.3px;
+    position: relative;
   }
 
   .right h3:nth-child(3) {
@@ -216,4 +217,16 @@
 .right button:hover {
   background-color: white;
   color: #DD2804;
+}
+
+
+.right h4 {
+  background-color: green;
+  padding: 10px 25px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 13px;
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

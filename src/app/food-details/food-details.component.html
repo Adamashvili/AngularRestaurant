@@ -1,55 +1,3 @@
-<!-- <section class="container details">
-  <div class="left">
-    <button routerLink="/">&larr; Back</button>
-    <img [src]="foodDetails.image" alt="" />
-  </div>
-  <div class="right">
-    <div class="info">
-      <h1>{{ foodDetails.name }}</h1>
-      <p>Price: {{ foodDetails.price | currency }}</p>
-      <div class="specList">
-        <p>
-          <i
-            [style.color]="foodDetails.vegeterian == 'true' ? 'green' : 'red'"
-            class="fa-solid fa-{{
-              foodDetails.vegeterian == 'true' ? 'circle-check' : 'x'
-            }}"
-          ></i>
-          Vegeterian
-        </p>
-        <p>
-          <i
-            [style.color]="foodDetails.nuts == 'true' ? 'green' : 'red'"
-            class="fa-solid fa-{{ foodDetails.nuts == 'true' ? 'circle-check' : 'x' }}"
-          ></i>
-          Nuts
-        </p>
-      </div>
-      <p>
-        {{foodDetails.name}}, sit amet consectetur adipisicing elit. Accusantium,
-        soluta porro explicabo perferendis quas quaerat aliquam optio dolor
-        reiciendis commodi libero ab. Suscipit fuga quae, consequuntur reiciendis
-        ipsa iusto quam voluptas labore asperiores accusamus debitis, animi magnam
-        laudantium culpa reprehenderit, ratione atque odit esse dignissimos
-        aliquid. Sed consequuntur libero magni cum voluptatibus iusto! Ullam error
-        repellat nesciunt temporibus commodi atque iusto eveniet ut, consequuntur,
-        odio, doloremque ea? Dolor, sed recusandae?
-      </p>
-      <div class="addcart">
-        <div class="field">
-            <p>Enter Quantity:</p>
-            <input type="number" [(ngModel)]="itemQuantity">
-        </div>
-        <button (click)="addToCart(foodDetails)">Add to Cart</button>
-      </div>
-      
-    </div>
-    </div>
-    
-</section> -->
-
-
-
 <section >
   <button (click)="close()">X</button>
   <div class="left">
@@ -64,5 +12,6 @@
     <input  type="number" placeholder="Enter Quantity" [(ngModel)]="itemQuantity">
     <h3>Total: {{(+itemQuantity * foodDetails.price) | currency}} </h3>
     <button (click)="addToCart(foodDetails)">ADD TO CART</button>
+    @if (isSmsShown) { <h4> {{addCartSMS}} </h4> }
   </div>
 </section>

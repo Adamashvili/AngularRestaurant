@@ -19,7 +19,7 @@
       <div class="right">
         <button (click)="updateItem(item, '+')">+</button>
         <h5> {{item.quantity}} </h5>
-        <button (click)="updateItem(item, '-')">-</button>
+        <button [disabled]="item.quantity <= 1" (click)="updateItem(item, '-')">-</button>
       </div>
     </div>
     <i (click)="deleteItem(item.product.id, item.product.name)" class="fa-solid fa-trash"></i>
@@ -30,15 +30,15 @@
       <img src="../../assets/emptycart.png" alt="">
       <h3>Hungry!</h3>
       <p>Your don`t have any foods in cart at this time</p>
-      <button>Go to Menu</button>
+      <button routerLink="/menu">Go to Menu</button>
     </div>
   }
   </div>
-  @if (cartList.length > 0) {
+  @if (cartList().length > 0) {
   <div class="total">
     <div class="field">
       <p>Subtotal:</p>
-      <p>{{totalPrice | currency}}</p>
+      <p>{{totalPrice() | currency}}</p>
     </div>
     <div class="field">
       <p>service fee:</p>
@@ -47,7 +47,7 @@
     <div class="line"></div>
     <div class="field">
       <h2>Total:</h2>
-      <h2>{{totalPrice + 5| currency}}</h2>
+      <h2>{{totalPrice() + 5| currency}}</h2>
     </div>
     <button>Checkout</button>
   </div>

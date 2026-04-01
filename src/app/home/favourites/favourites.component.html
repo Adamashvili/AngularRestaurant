@@ -13,7 +13,7 @@
     </div>
     <button routerLink="/menu">Full Menu</button>
 </div>
-
+@if (specialImage) {
 <div class="special">
     <div class="left">
         <h2><i class="fa-solid fa-star"></i> SPECIAL OF <br> THE WEEK <i class="fa-solid fa-star"></i></h2>
@@ -23,3 +23,4 @@
     </div>
     <div style="background-image: url({{specialImage.image}});" class="right"></div>
 </div>
+}

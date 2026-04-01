@@ -2,13 +2,14 @@ import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
 import { ApiService } from '../api.service';
 import { ToolsService } from '../tools.service';
 import { CommonModule } from '@angular/common';
+import { AppRoutingModule } from "../app-routing.module";
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AppRoutingModule],
 })
 export class CartComponent {
   constructor(
@@ -20,7 +21,7 @@ export class CartComponent {
   }
 
   public cartList = signal<any>([]);
-  public totalPrice: any;
+  public totalPrice = signal<number>(0);
   @Output() public closeEmit: EventEmitter<boolean> = new EventEmitter();
 
   getCartList() {
@@ -41,32 +42,18 @@ export class CartComponent {
         productId: item.product.id,
       })
       .subscribe(() => {
-        this.totalPriceFn(this.cartList);
+       this.getCartList();
       });
   }
 
-  decreaseItem(item: any) {
-    if (item.quantity >= 2) {
-      item.quantity--;
-      this.service
-        .updateCartItem({
-          quantity: item.quantity,
-          price: item.product.price,
-          productId: item.product.id,
-        })
-        .subscribe(() => {
-          this.totalPriceFn(this.cartList);
-        });
-    }
-  }
+  
 
   deleteItem(id: number, name: string) {
     this.service.deleteCartItem(id).subscribe({
       next: () => {
-        alert(`${name} removed from cart successfully`);
         this.getCartList();
       },
-      error: (err) => alert(err),
+      error: () => alert('Try again...'),
     });
   }
 
@@ -77,13 +64,11 @@ export class CartComponent {
       });
 
       if (prices.length > 0) {
-        let total = prices.reduce((prev: number, crnt: number) => {
-          return prev + crnt;
-        });
+        let total = prices.reduce((prev: number, crnt: number) => prev + crnt);
 
-        this.totalPrice = total;
+        this.totalPrice.set(total);
       } else {
-        this.totalPrice = 0;
+        this.totalPrice.set(0);
       }
     }
   }
