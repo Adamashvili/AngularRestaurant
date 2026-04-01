@@ -34,7 +34,7 @@ import { FavouritesComponent } from './home/favourites/favourites.component';
         FavouritesComponent,
         
     ],
-    bootstrap: [AppComponent], imports: [BrowserModule, AppRoutingModule, FormsModule,], providers: [
+    bootstrap: [AppComponent], imports: [BrowserModule, AppRoutingModule, FormsModule, CartComponent], providers: [
         {
             provide: HTTP_INTERCEPTORS,
             useClass: InterService,

@@ -1,215 +1,205 @@
-.banner {
-  height: 400px;
-  background-image: url("../../assets/banner.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
-.banner h1 {
-  color: white;
-  font-family: "Playwrite FR Trad", cursive;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-  font-size: 28px;
-}
-
-section h1 {
-  text-align: center;
-  margin: 30px auto;
-  text-align: center;
-  margin: 20px 0;
-  font-family: "Playwrite US Modern", cursive;
-  font-optical-sizing: auto;
-  font-weight: bold;
-  font-style: normal;
-}
-
-table {
-  border-radius: 7px;
+.cartArea {
+  position: fixed;
+  height: 100vh;
+  width: 350px;
+  background-color: white;
+  top: 0;
+  right: 0;
+  z-index: 9999999;
+  padding: 15px;
   overflow: hidden;
-  font-family: "Playwrite US Modern", cursive;
-  font-optical-sizing: auto;
-  font-weight: 600;
-  font-style: normal;
-  transition: 0.3s;
-  width: 100%;
+  box-shadow: inset 10px 0 10px #f3f2f2, -2px 0 15px 20px white;
 }
 
-table,
-tr {
-  height: 70px;
-  box-shadow: 0 0 3px 1px #190b02;
-  border-collapse: collapse;
-  width: 100%;
+.cartList {
+  height: calc(100vh - 220px);
+  overflow: scroll;
+  scrollbar-width: none;
+}
+
+.cartList > h3 {
   text-align: center;
-}
-
-tr:nth-child(1) {
-  height: 40px;
-  background-color: #190b02;
-  color: #fda262;
-}
-td:nth-child(2) {
-  text-align: start;
-}
-
-table img {
-  width: 50px;
-}
-
-.increase,
-.decrease {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-  background-color: #190b02;
-  color: #fda262;
-  font-size: 17px;
-  transition: 0.3s;
-}
-
-.increase:hover,
-.decrease:hover {
-  color: white;
-  box-shadow: 0 0 10px 1px #190b02;
-}
-
-table .removeBtn {
-  padding: 4px 12px;
-  background-color: #9a1206;
-  box-shadow: 0 0 4px 1px #9a1206;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: 0.3s all ease;
-  font-family: "Playwrite FR Trad", cursive;
-
-  font-weight: bold;
-  font-style: normal;
-}
-
-table .removeBtn:hover {
-  background-color: red;
-  box-shadow: 0 0 9px 1px red;
-}
-
-table tr:last-child {
+  font-weight: 400;
+  margin-bottom: 20px;
   position: relative;
 }
 
-.total {
+h3 i {
   position: absolute;
-  background-color: #190b02;
+  left: 0;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  transition: 0.5s;
+  font-size: 15px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.6px solid transparent;
+}
+
+h3 i:hover {
+  background-color: #3e0f08;
   color: white;
-  right: 0;
-  height: 100%;
+  border: 0.6px solid black;
+  
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  width: 370px;
+  justify-content: space-between;
+  transition: 0.5s;
+}
+
+.list > i {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 0.8px solid rgb(31, 31, 31);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-inline: 60px;
-  border-bottom-left-radius: 40px;
+  color: #3e0f08;
+  transition: 0.4s;
+  cursor: pointer;
 }
 
-.emptyCart {
+.list > i:hover {
+  background-color: #3e0f08;
+  color: white;
+}
+
+.list:hover {
+  transform: translate(-50px);
+}
+
+.card {
+  width: 325px;
+  height: 110px;
+  display: grid;
+  grid-template-columns: 2.5fr 4fr 1fr;
+  background-color: #fff1f4;
+  margin-top: 7px;
+  border-radius: 15px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px;
+}
+
+.card .image {
+  height: 100%;
+  object-fit: contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fedad0;
+  border-radius: 10px;
+}
+
+.image img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.middle {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  color: #3e0f08;
+  padding-left: 15px;
+  text-shadow: 0 0 0.5px black;
+}
+
+.middle i {
+  color: #da7658;
+  font-size: 14px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
   align-items: center;
 }
 
-.emptyCart button {
-  padding: 10px 10px;
-  cursor: pointer;
-  background-color: #63391f;
-  color: white;
+.right button {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
   border: none;
-  border-radius: 7px;
+  cursor: pointer;
+}
+
+.right button:first-child {
+  background-color: #d16f52;
+  color: white;
+}
+.right button:last-child {
+  background-color: transparent;
+  color: black;
+  border: 0.9px solid black;
+}
+
+
+.total {
+  height: 200px;
+  background-color: #FFF1F4;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 20px 20px 0 0 ;
+  box-shadow: 0 -5px 3px #ebdade;
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.total .field {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  text-shadow: 0 0 0.5px black;
+}
+
+.total .line {
+  height: 2px;
+  border-bottom: 1px dashed black;
+}
+
+.total button, .emptyCart button {
+  width: 100%;
+  height: 45px;
+  background-color: #d16f52;
+  border: none;
+  border-radius: 17px;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
   transition: 0.3s;
-  font-family: "Fresca", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  transition: 0.3s;
+}
+.total button:hover, .emptyCart button:hover {
+  background-color: #3e0f08;
 }
 
-.emptyCart button:hover {
-  background-color: #b16d43;
-  box-shadow: 0 0 10px 1px #b16d43;
+.emptyCart {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px;
+  font-size: 14px;
 }
 
-button:disabled {
-  background-color: grey;
-  cursor: not-allowed;
-}
-
-button:disabled:hover {
-  box-shadow: none;
-}
-
-
-
-@media screen and (max-width: 998px) {
-  .banner h1 {
-    font-size: 16px;
-  }
-  
-}
-
-@media screen and (max-width: 768px) {
-  .banner {
-    height: 250px;
-  }
-
-  table  {
-   width: 90%;
-   margin: 0 auto;
-   font-size: 13px;
-  }
-
-  table tr {
-    height: 50px;
-  }
-  
-}
-
-@media screen and (max-width: 600px) {
-  table .removeBtn {
-    padding: 2px 7px;
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .banner h1 {
-    font-size: 12px;
-    width: 80%;
-    margin: 0 auto;
-  }
-  
-  table {
-    font-size: 7px;
-  }
-
-  table tr {
-    height: 30px;
-  }
-
-  table tr td:nth-child(4),
-  table tr th:nth-child(3) {
-    display: none;
-  }
-
-  
-
-   
-
-  
-
-  
-  
+.emptyCart img  {
+  width: 200px;
 }

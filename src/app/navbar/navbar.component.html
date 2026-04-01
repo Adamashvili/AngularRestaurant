@@ -1,18 +1,27 @@
-
 <nav>
-    <h4>ASIAN TASTE <i class="fa-solid fa-star"></i></h4>
-    <div class="lists">
-        <ul>
-            <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" routerLink="/">Home</li>
-            <li routerLinkActive="active" routerLink="/menu" >Menu</li>
-            <li routerLinkActive="active" >Contact</li>
-            <li> <i class="fa-solid fa-user"></i> Log In </li>
-            <li> <i class="fa-solid fa-cart-shopping"></i> 0 </li>
-        </ul>
-        <button navBtn>Order Online</button>
-    </div>
-    <div class="mobileBar">
-         <li> <i class="fa-solid fa-cart-shopping"></i> 0 </li>
-         <i class="fa-solid fa-bars"></i>
-    </div>
+  <h4>ASIAN TASTE <i class="fa-solid fa-star"></i></h4>
+  <div class="lists">
+    <ul>
+      <li
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        routerLink="/"
+      >
+        Home
+      </li>
+      <li routerLinkActive="active" routerLink="/menu">Menu</li>
+      <li routerLinkActive="active">Contact</li>
+      <li><i class="fa-solid fa-user"></i> Log In</li>
+      <li (click)="showCart = true"><i class="fa-solid fa-cart-shopping"></i> {{cartNumber}} </li>
+    </ul>
+    <button navBtn>Order Online</button>
+  </div>
+  <div class="mobileBar">
+    <li><i class="fa-solid fa-cart-shopping"></i> 0</li>
+    <i class="fa-solid fa-bars"></i>
+  </div>
 </nav>
+
+@if (showCart) {
+  <app-cart (closeEmit)="showCart = $event"></app-cart>
+}

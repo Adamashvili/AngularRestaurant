@@ -9,14 +9,9 @@ import { ToolsService } from '../tools.service';
   styleUrl: './food-details.component.css',
   standalone: false
 })
-export class FoodDetailsComponent implements OnInit {
+export class FoodDetailsComponent {
   constructor(public service: ApiService, public toolsServ: ToolsService) { }
-  ngOnInit(): void {
-    // this.getQuery()
-    // this.getCartList()
-
-
-  }
+  
   @Output() closeEmit: EventEmitter<boolean> = new EventEmitter()
   @Input() public foodDetails: any;
   public itemQuantity: number = 1
@@ -26,12 +21,6 @@ export class FoodDetailsComponent implements OnInit {
   close() {
     this.closeEmit.emit(false)
   }
-
-  //   getQuery() {
-  //     this.actRoute.queryParams.subscribe((data) => {
-  //       this.foodDetails = data;
-  //     });
-  //   }
 
   addToCart(dataToPost: any) {
     this.service.getCartItems().subscribe((cartData: any) => {
@@ -44,7 +33,7 @@ export class FoodDetailsComponent implements OnInit {
         }).subscribe({
           next: () => {
             alert("Product added to cart successfully")
-
+            this.toolsServ.updateCartPage.next(true)
 
           },
           error: () => alert("Try again...")
@@ -59,7 +48,7 @@ export class FoodDetailsComponent implements OnInit {
         }).subscribe({
           next: () => {
             alert("Product Increased")
-
+            this.toolsServ.updateCartPage.next(true)
 
           },
           error: () => alert("Try again...")

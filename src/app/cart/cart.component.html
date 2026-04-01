@@ -1,42 +1,56 @@
-<section>
-  <div class="banner">
-    <h1>Fast And Efficient, Online Ordering You Must Try.</h1>
+<div class="cartArea">
+  
+  <div class="cartList">
+    <h3><i (click)="hideCart()" class="fa-solid fa-angle-right"></i>  Cart</h3>
+  @for (item of cartList(); track $index) {
+  <div class="list">
+    <div class="card">
+      <div class="image">
+        <img
+        [src]="item.product.image"
+          alt=""
+        />
+      </div>
+      <div class="middle">
+        <h5> {{item.product.name}} </h5>
+        <h6><i class="fa-solid fa-star"></i> 5</h6>
+        <h5> {{item.product.price | currency }} </h5>
+      </div>
+      <div class="right">
+        <button (click)="updateItem(item, '+')">+</button>
+        <h5> {{item.quantity}} </h5>
+        <button (click)="updateItem(item, '-')">-</button>
+      </div>
+    </div>
+    <i (click)="deleteItem(item.product.id, item.product.name)" class="fa-solid fa-trash"></i>
   </div>
-</section>
-
-@if (cartList) {
-  <section class="container">
-    <h1>Cart</h1>
-    @if (cartList.length > 0) {
-      <table>
-        <tr>
-          <th colspan="2">Product</th>
-          <th>Quantity</th>
-          <th>Price</th>
-          <th>Total</th>
-          <th>Action</th>
-        </tr>
-        @for (items of cartList; track items) {
-          <tr>
-            <td><img [src]="items.product.image" alt=""></td>
-            <td>{{items.product.name}}</td>
-            <td ><button (click)="increaseItem(items)" class="increase">+</button> {{items.quantity}} <button [disabled]="items.quantity == 1" (click)="decreaseItem(items)" class="decrease">-</button></td>
-            <td>{{items.product.price | currency}}</td>
-            <td>{{(items.product.price * items.quantity) | currency}}</td>
-            <td><button (click)="deleteItem(items.product.id, items.product.name)" class="removeBtn">Remove</button></td>
-          </tr>
-        }
-        <tr>
-          <td class="total" colspan="6">Total Price: {{totalPrice | currency}}</td>
-        </tr>
-      </table>
-    }
-    @if (cartList.length == 0 ) {
-      <section class="container emptyCart">
-        <img src="../../assets/emptycart.png" alt="">
-        <h1>Your Cart is empty...</h1>
-        <button routerLink="/">Go To Homepage</button>
-      </section>
-    }
-  </section>
+  }
+  @empty {
+    <div class="emptyCart">
+      <img src="../../assets/emptycart.png" alt="">
+      <h3>Hungry!</h3>
+      <p>Your don`t have any foods in cart at this time</p>
+      <button>Go to Menu</button>
+    </div>
+  }
+  </div>
+  @if (cartList.length > 0) {
+  <div class="total">
+    <div class="field">
+      <p>Subtotal:</p>
+      <p>{{totalPrice | currency}}</p>
+    </div>
+    <div class="field">
+      <p>service fee:</p>
+      <p>$5.00</p>
+    </div>
+    <div class="line"></div>
+    <div class="field">
+      <h2>Total:</h2>
+      <h2>{{totalPrice + 5| currency}}</h2>
+    </div>
+    <button>Checkout</button>
+  </div>
 }
+ 
+</div>

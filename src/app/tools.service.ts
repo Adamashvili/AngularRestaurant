@@ -13,6 +13,8 @@ export class ToolsService {
   public categoryList: Subject<any> = new Subject()
   public miniNavToggle:  BehaviorSubject<boolean> = new BehaviorSubject(false)
   public loadingSub: BehaviorSubject<boolean> = new BehaviorSubject(false)
+
+  public updateCartPage: Subject<any> = new Subject()
   
 
   startLoading() {
